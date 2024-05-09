@@ -28,6 +28,8 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
                     // Now you have the text content in the variable 'text', you can perform calculations or any other operations on it
                     var youCount = 0;
                     var otherCount = 0;
+                    var youLen = 0 ;
+                    var otherLen = 0;
                     console.log(you);
                     console.log(other);
                     let lines = text.split("\n");
@@ -36,13 +38,17 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
                         console.log("-------------------");
                         if(line.includes(you)){
                             youCount++;
+                            youLen = youLen + line.length;
                         }
                         else if(line.includes(other)){
                             otherCount++;
+                            otherLen = otherLen + line.length;
                         }
                     });
-                    console.log(you + " : " + youCount);
-                    console.log(other + " : " + otherCount);
+                    console.log(you + " : " + youLen);
+                    console.log(other + " : " + otherLen);
+                    const convoHeading = document.getElementById("convoHeading");
+                    convoHeading.textContent="Who messages more?"
                     const convo = document.getElementById("convo");
                    
                     new Chart(convo, {
@@ -55,6 +61,29 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
                         datasets: [{
                           label: 'Number of Messages',
                           data: [youCount,otherCount],
+                          backgroundColor: [
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 99, 132)',
+                            
+                          ],
+                          hoverOffset: 4
+                        }]
+                      }
+                    });
+                    const charCountHeading = document.getElementById("charCountHeading");
+                    charCountHeading.textContent="Whose messages are bigger?"
+                    const charCount = document.getElementById("charCount");
+                   
+                    new Chart(charCount, {
+                      type: 'pie',
+                      data : {
+                        labels: [
+                          you,
+                          other,
+                        ],
+                        datasets: [{
+                          label: 'Average Message Length',
+                          data: [(youLen/youCount),(otherLen/otherCount)],
                           backgroundColor: [
                             'rgb(54, 162, 235)',
                             'rgb(255, 99, 132)',

@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zip File Upload</title>
+    <title>ChatStat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>ChatStat</h2>
+    <center><div class="title">
+        <h2>ChatStat</h2>
+    </div></center>
     <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
 
         <label for="zipFile">Upload Your Whatsapp Chat ZIP file:</label><br>
@@ -21,7 +23,10 @@
         
         <input type="submit" value="Submit">
     </form>
- <center>   <canvas id = "convo" class="chart" ></canvas></center>
+    <center><h2 id ="convoHeading"></h2></center>
+    <center><canvas id="convo" class="chart"></canvas></center>
+    <center><h2 id ="charCountHeading"></h2></center>
+    <center><canvas id="charCount" class="chart"></canvas></center>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 <script src="main.js"></script>

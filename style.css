@@ -102,3 +102,11 @@ input[type="file"] {
     height: 300px !important;
     width: 300px !important;
 }
+.title{
+    background-color: rgb(118, 204, 112);
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    border-radius:10%;
+}
